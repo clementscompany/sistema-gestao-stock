@@ -7,7 +7,7 @@ export default function TableStock(produtos) {
         `
             <li>
               <span>
-                <i class="bi bi-box-seam-fill"></i><b>${produto?.nome}</b> <i>Quantidade: 2</1>
+                <i class="bi bi-box-seam-fill"></i><b>${produto?.nome}</b> <i>Quantidade: ${produto?.quantidade}</1>
               </span>
               <button class="tableButton seeButton" value="${produto?.id}">
                 <i class="bi bi-eye"></i>

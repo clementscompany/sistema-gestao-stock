@@ -22,11 +22,9 @@ class LoginController {
   //Set Passwod 
   async SetPassword(req, res) {
     const { username, password, id } = req.body;
-    console.log(req.body);
-
     try {
       const hashPassword = await GeneratePassword(password);
-      const data = { password: hashPassword, id: id };
+      const data = { password: hashPassword.senha, id: id };
       const response = await UserModel.SetPassword(data);
       res.status(201).json(response);
     } catch (error) {
