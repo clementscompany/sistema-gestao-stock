@@ -11,6 +11,16 @@
     "start": "electron .",
     "server": "nodemon ./backend/test/text.js"
   },
+  "build":{
+    "appId":"com.sistema-de-gestao.sistema",
+    "productName": "istema-de-gestao-de-stock",
+    "linux":{
+      "icon":"./src/img/icon.jpeg"
+    },
+    "win":{
+      "icon":"./src/img/icon.jpeg"
+    }
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",

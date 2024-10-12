@@ -62,19 +62,36 @@ const CreateTable = () => {
 
   const admin = `
   CREATE TABLE IF NOT EXISTS admin (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username VARCHAR(244) NOT NULL,
-    password VARCHAR(244)  NULL,
-    data_adicao DATE NULL DEFAULT CURRENT_TIMESTAMP
-  )
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username VARCHAR(244) NOT NULL,
+      password VARCHAR(244) NULL DEFAULT NULL,
+      data_adicao DATE NULL DEFAULT CURRENT_TIMESTAMP
+  );
 `;
 
   DB.run(admin, (err)=>{
     if (err) {
       console.error("Erro ao criar a tabela admin");
+      return;
     }
+    baseAdmin();
   })
-
+  const baseAdmin = () => {
+    DB.all("SELECT * FROM admin", (err, data) => {
+      if (err) {
+        console.log("Erro na criação da tabela admin: " + err);
+        return;
+      }
+      if (data.length === 0) {
+        const query = "INSERT INTO admin (username) VALUES ('admin')"; 
+        DB.run(query, (err) => {
+          if (err) {
+            console.log("Erro ao criar a entrada na tabela admin: " + err);
+          }
+        });
+      }
+    });
+  };  
   DB.run(produtos, (err) => {
     if (err) {
       console.error("Erro ao criar tabela produtos:", err.message);
@@ -83,5 +100,3 @@ const CreateTable = () => {
 
 };
 CreateTable();
-
-

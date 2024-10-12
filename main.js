@@ -9,6 +9,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1200,
     height: 660,
+    icon:"./src/img/icon.jpeg",
     acceptFirstMouse:true,
     autoHideMenuBar:true,
     // fullscreen:true,
